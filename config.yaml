@@ -1,0 +1,12 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: "Salayna's Blog"
+theme: "toha"
+
+languages:
+  en:
+    languageName: English
+    weight: 1
+  fr:
+    languageName: French
+    weight: 1
