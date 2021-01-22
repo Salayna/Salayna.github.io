@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 baseURL: https://salayna.github.io/
 languageCode: fr-fr
+=======
+baseURL: http://example.org/
+languageCode: en-us
+>>>>>>> parent of ae7dca9... Publication
 title: "Salayna's Blog"
 theme: "toha"
 
