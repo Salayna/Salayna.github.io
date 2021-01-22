@@ -10,3 +10,8 @@ languages:
   fr:
     languageName: French
     weight: 1
+
+enableEmoji: true
+params:
+  gitRepo: https://github.com/Salayna/Salayna.github.io
+  enableBlogPost: true

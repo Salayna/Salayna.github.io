@@ -1,0 +1,40 @@
+section:
+  name: Experiences
+  id: experiences
+  enable: true
+  weight: 3
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your experiences
+experiences:
+  - company:
+      name: NRCI
+      url: "http://www.nrci.fr"
+      location: Choisy-Le-Roi, France
+      # company overview
+      overview: NRCI is an engineering company present on tertiary electricity, railway infrastructure and industrial electricity projects in France and abroad. Our services cover a wide range of activities and environments
+    positions:
+      - designation: Senior Software Engineer
+        start: Nov 2020
+        # don't provide end date if you are currently working there. It will be replaced by "Present"
+        # end: Dec 2020
+        # give some points about what was your responsibilities at the company.
+        responsibilities:
+          - Lead Backend Team
+          - Lead Mobile team.
+          - Design and Develop smartcities softwares and infrastructures
+
+  - company:
+      name: French Internal Security Technology and Information Systems Department
+      url: "https://www.gendarmerie.interieur.gouv.fr/"
+      location: Issy-Les-Moulineux, France
+      overview: This service's primary mission is to oversee the technological modernization of the National Police and the National Gendarmerie. It thus ensures the management of the information system of the Police and the Gendarmerie
+    positions:
+      - designation: Software Engineer
+        start: Sept 2019
+        end: Sept 2020
+        responsibilities:
+          - Mobile development
+          - Backend Engineering
