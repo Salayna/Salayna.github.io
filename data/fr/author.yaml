@@ -1,0 +1,17 @@
+# some information about you
+name: "Salayna Doukoure"
+nickname: "Salayna"
+# greeting message before your name. it will default to "Hi! I am" if not provided
+greeting: "Salut, je m'appelle"
+image: images/author/avatar.png
+# give your some contact information. they will be used in the footer
+contactInfo:
+  email: "salaynadoukoure@gmail.com"
+  phone: "+33652340788"
+
+# some summary about what you do
+summary:
+  - Je suis développeur Backend, Mobile et IoT
+  - Je suis DevOps
+  - Je suis ingénieur en IoT
+  - Je contribue à des projets Open-Source

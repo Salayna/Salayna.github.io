@@ -1,0 +1,40 @@
+section:
+  name: Experiences
+  id: experiences
+  enable: true
+  weight: 3
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your experiences
+experiences:
+  - company:
+      name: NRCI
+      url: "http://www.nrci.fr"
+      location: Choisy-Le-Roi, France
+      # company overview
+      overview: NRCI est une ingénierie présente sur des projets d’électricité tertiaire, d'infrastructures ferroviaire et d'électricité industrielle, en France et à l’Etranger. Nos prestations couvrent un large panel d'activités et d'environnements.
+    positions:
+      - designation: Ingénieur Backend et IoT
+        start: Nov 2020
+        # don't provide end date if you are currently working there. It will be replaced by "Present"
+        # end: Dec 2020
+        # give some points about what was your responsibilities at the company.
+        responsibilities:
+          - Ingénieur Backend
+          - Ingénieur Mobile
+          - Design and Developpement de système IoT dans le domaine environemental et smartcities
+
+  - company:
+      name: Service des technologies et des systèmes d'information de la Sécurité intérieure
+      url: "https://www.gendarmerie.interieur.gouv.fr/"
+      location: Issy-Les-Moulineux, France
+      overview: Ce service a pour mission première la maîtrise d'ouvrage des modernisations technologiques de la Police nationale et de la Gendarmerie nationale. Il assure ainsi le pilotage du système d'information de la Police et de la Gendarmerie
+    positions:
+      - designation: Développeur Mobile
+        start: Sept 2019
+        end: Sept 2020
+        responsibilities:
+          - Développement Mobile
+          - Développement Backend

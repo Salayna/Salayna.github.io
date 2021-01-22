@@ -1,0 +1,25 @@
+# section information
+section:
+  name: Compétences
+  id: skills
+  enable: true
+  weight: 2
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your Skills.
+# Give a summary of you each skill in the summary section.
+skills:
+  - name: Développement en Go
+    icon: "/images/sections/skills/go.png"
+    summary: "Le Go est l'un de mes langages principaux pour ce qui concernent le Développement Backend et Applicatif."
+    url: "https://golang.org/"
+
+  - name: Cloud Computing
+    icon: "/images/sections/skills/cloud.png"
+    summary: "J'ai pu travailler avec de nombreux fournisseurs (OVH, AWS etc...)"
+
+  - name: Typescript
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png"
+    summary: "Le Typescript est l'un de mes langages principaux pour ce qui concernent le Développement Backend"

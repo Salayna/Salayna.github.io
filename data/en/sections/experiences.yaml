@@ -16,7 +16,7 @@ experiences:
       # company overview
       overview: NRCI is an engineering company present on tertiary electricity, railway infrastructure and industrial electricity projects in France and abroad. Our services cover a wide range of activities and environments
     positions:
-      - designation: Senior Software Engineer
+      - designation: Software Engineer
         start: Nov 2020
         # don't provide end date if you are currently working there. It will be replaced by "Present"
         # end: Dec 2020
