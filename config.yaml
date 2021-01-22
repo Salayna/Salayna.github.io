@@ -8,10 +8,11 @@ languages:
     languageName: English
     weight: 1
   fr:
-    languageName: French
+    languageName: Français
     weight: 1
 
 enableEmoji: true
 params:
+  background: images/site/mountain.jpg
   gitRepo: https://github.com/Salayna/Salayna.github.io
   enableBlogPost: true
