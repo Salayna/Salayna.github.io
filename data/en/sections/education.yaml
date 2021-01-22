@@ -1,0 +1,26 @@
+section:
+  name: Education
+  id: education
+  enable: true
+  weight: 4
+  showOnNavbar: true
+  template: sections/education.html
+
+degrees:
+  - name: Bachelor in Mobility and IoT
+    icon: fa-desktop
+    timeframe: 2019-Now
+    institution:
+      name: École Supérieur du Génie Informatique
+      url: "https://www.esgi.fr/"
+
+  - name: Associate’s Degree in Technology
+    icon: fa-graduation-cap
+    timeframe: 2017-2019
+    institution:
+      name: Louis Armand High School
+      url: "https://www.larmand.fr"
+    grade: #(optional)
+      scale: Grade
+      achieved: 14
+      outOf: 20

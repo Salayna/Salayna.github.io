@@ -1,0 +1,26 @@
+section:
+  name: Education
+  id: education
+  enable: true
+  weight: 4
+  showOnNavbar: true
+  template: sections/education.html
+
+degrees:
+  - name: Bachelor en Mobilité et Objet Connectés
+    icon: fa-desktop
+    timeframe: 2019-Maintenant
+    institution:
+      name: École Supérieur du Génie Informatique
+      url: "https://www.esgi.fr/"
+
+  - name: BTS SNIR
+    icon: fa-graduation-cap
+    timeframe: 2017-2019
+    institution:
+      name: Lycée Louis Armand
+      url: "https://www.larmand.fr/"
+    grade: #(optional)
+      scale: Moyenne
+      achieved: 14
+      outOf: 20

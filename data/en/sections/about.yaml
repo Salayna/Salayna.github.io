@@ -32,6 +32,9 @@ socialLinks:
   - name: Twitter
     icon: "fab fa-twitter"
     url: "https://www.twitter.com/DoukoureSalayna/"
+  - name: LinkedIn
+    icon: "fab fa-linkedin"
+    url: "https://www.linkedin.com/in/salayna-doukoure-aa90a0154/"
 
 # your soft skills
 # give the percentage between 50 to 100 with 5 intervals.
