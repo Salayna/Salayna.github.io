@@ -13,6 +13,6 @@ languages:
 
 enableEmoji: true
 params:
-  background: images/site/mountain.jpg
+  background: images/site/clay.jpg
   gitRepo: https://github.com/Salayna/Salayna.github.io
   enableBlogPost: true
