@@ -23,3 +23,13 @@ skills:
   - name: Typescript
     icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png"
     summary: "Le Typescript est l'un de mes langages principaux pour ce qui concernent le Développement Backend"
+    url: "https://www.typescriptlang.org/"
+  
+  - name: Développement Backend
+    summary: "Principalement en Golang et en Typescript mais peut aussi se faire en Java"
+  
+  - name: Développement Mobile
+    summary: "Développement d'application hybride en Flutter mais aussi en natif(Java/Kotlin pour android, swift pour IOs)"
+  
+  - name: Administration de base de données(débutant)
+    summary: création et gestion de bases de données SQL et NoSQL
