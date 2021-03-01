@@ -151,7 +151,7 @@ Assez simple comme première fonction *notez que je fais ici abstraction de tout
 ```js
 app.get('/api/cars/:id', (req, res)=>{
     const id  = req.params.id
-    const car = cars.find(element => element.id = id);
+    const car = cars.find(element => element.id === id);
     res.send(car);
 });
 ```
@@ -163,7 +163,7 @@ Pour le **req.query** la requête va totalement changer de tête puisque les par
 app.get('/api/car', (req, res)=>{
  const id = req.query.id;
  const date = req.query.date;
- const car = cars.find(element => (element.id = id) && (element.date = date));
+ const car = cars.find(element => (element.id === id) && (element.date === date));
  res.send(car); 
 });
 ```
@@ -191,3 +191,16 @@ pour l'instant on se contente juste de renvoyé les données reçu en body. Mais
 Donc dans le corps de notre requête sur POSTMAN on va y mettre un objet car.
 ![POSTREQ](images/postman-test.png).
 Avec ceci notre CREATE est fait il nous reste donc le UPDATE et le DELETE.
+
+### UPDATE
+Le UPDATE (PATCH en HTTP) en http est un mélange du GET du POST car on va devoir u'a&bord chercher la ressource avec son id et ensuite lui dire les champs à éditer, dans l'exemple on va juste le faire avec le proprio de la voiture, on va d'abord créer la route qui convient
+```js
+app.patch('/api/car/:id', (req, res)=>{
+    const id = req.params.id
+    let car = cars.find(element => element.id === id);
+    let proprio = req.body.proprio;
+    car.proprio = proprio;
+    res.send(car);
+});
+```
+avec cette méthode 
