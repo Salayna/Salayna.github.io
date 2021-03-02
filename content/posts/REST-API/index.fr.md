@@ -40,21 +40,19 @@ Avant d'aller plus loin on va d'abord expliquer quelques points vu au dessus:
 ### Qu'est-ce que NodeJS ? 
 NodeJS est une plateforme logiciel qui permet de booster le Javascript qui, avant tout ça était surtout un langages utilisé pour faire de belles animations et rendre un peu plus dynamique les sites web. Le NodeJS permet au Javascript d'être utilisé côté serveur et de faire un bon nombre de choses assez incroyable (programmation asynchrone etc...)
 ### À quoi sert le fichier package.json
-le fichier package.json sert de fichier de contrôle pour votre projet. Le nom, l'auteur, des script utile, les dépendances et pleins d'autres informations sont stocké à l'interieur de ce fichier.  
+le fichier package.json sert de fichier de contrôle pour votre projet. Le nom, l'auteur, des script utile, les dépendances et pleins d'autres informations sont stocké à l'intérieur de ce fichier.  
 
 ### Ajout de dépendances
  On va avoir besoin de quelques dépendances pour ce projet.
  - Express: pour la création du serveur web et la gestion de requêtes
- - Body-Parser: Pour la récupération du corps des requêtes
  - Nodemon: pour ne pas avoir à toujours redémarrer notre app pendant que l'on développe
 
- Pour installer ces dépendances on va utiliser la commande `npm install express body-parser`  
+ Pour installer ces dépendances on va utiliser la commande `npm install express`  
  Vous noterez que je n'ai pas mis nodemon dans la commande juste, c'est parce que je veux avoir nodemon que pendant le développement et pas en production, donc je vais l'installer en **dev dependency** comme ceci:  
  `npm install --save-dev nodemon`  
  Votre ficher `package.json` devrait maintenant avoir ces deux objets:  
  ```json
  "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
@@ -77,7 +75,7 @@ function sendStartingMessage(port) {
 app.listen(3000, startingMessage(3000));
   ```
 Maintenant en effectuant la commande `node .` à la racine de notre projet on devrait avoir le message "app running on port 3000" dans le terminal. Ok, mais comment ça se fait ? Reprenons le code ligne par ligne.  
-Dans les deux première lignes on va importer notre module avec la fonction `require("{le nom du module à importer}")`, dont on va créer un objet dans la variable app. On va ensuite créer un port d'écoute avec la fonction `listen()` qui prends en paramètre le port d'écoute. Vous noterez que `listen()` a aussi un paramètre assez particulier qui est la fonction `sendStartingMessage()`, c'est ce qu'on appelle un callback et ce callback ne va être effectuer que si le serveur est bien initialisé. Effectuons un tout petit changement à ce dernier.  
+Dans les deux première lignes on va importer notre module avec la fonction `require("{le nom du module à importer}")`, dont on va créer un objet dans la variable `app`. On va ensuite créer un port d'écoute avec la fonction `listen()` qui prends en paramètre le port d'écoute. Vous noterez que `listen()` a aussi un paramètre assez particulier qui est la fonction `sendStartingMessage()`, c'est ce qu'on appelle un callback et ce callback ne va être effectuer que si le serveur est bien initialisé. Effectuons un tout petit changement à ce dernier.  
 ```js
 const express = require("express");
 const app = express();
@@ -102,7 +100,7 @@ votre object scripts devrait maintenant ressembler à ça:
     "dev:start": "nodemon ."
   },
 ```
-vous pouvez ensuite interrompre l'exécution de votre code et taper la commande ``npm run dev:start`` dans le terminal. maintenant à chaque fois que vous sauvergarderez vos modifications le code sera exécuté automatiquement.
+vous pouvez ensuite interrompre l'exécution de votre code et taper la commande ``npm run dev:start`` dans le terminal. maintenant à chaque fois que vous sauvegarderez vos modifications le code sera exécuté automatiquement.
 Pour tester si notre GET fonctionne, rien de plus simple, on va juste aller sur notre navigateur et allez à l'adresse suivante: http://localhost:3000/
 vous devriez avoir ce résultat.  
 ![response](images/api-message.png).
@@ -138,16 +136,16 @@ cars.push(car1, car2, car3);
 Dans la partie ci-dessous on va implémenter un CRUD (Create Read Update Delete) sur les voitures.
 
 ### Read
-Le Read passe donc par la méthode GET du protocole HTTP.On va d'avord conc commencer par le Read étant la fonction la plus simple, on fera trois lecture une qui permettra de récupérer toutes les voitures et deux qui permettront de récupérer une voiture en fonction de ses attributs.
+Le Read passe donc par la méthode GET du protocole HTTP.On va d'abord donc commencer par le Read étant la fonction la plus simple, on fera trois lecture une qui permettra de récupérer toutes les voitures et deux qui permettront de récupérer une voiture en fonction de ses attributs.
 Pour le premier Read on va rajouter un endpoint sur la route '/cars'. et ce endpoint renverra juste le contenue de notre tableau cars.
 ```js
 app.get('api/cars', (req, res)=> {
     res.send(cars);
 })
 ```
-Assez simple comme première fonction *notez que je fais ici abstraction de tout ce qui est base de données dans un exemple d'API en production(surement la prochaine leçon) le code sera beaucoup plus fourni*. Pour la prochaine fonction on récupèrera une voiture en fonction de certaines informations sur la voiture en paramètre en utilisant le paramètre req de la callback de la fonction get. Mais il y a deux manière de récupérer le paramètre soit à travers `req.query` ou à travers `req.params` le choix de l'un des deux va changer comment coder la fonction. On va donc voir les deux.
+Assez simple comme première fonction *notez que je fais ici abstraction de tout ce qui est base de données dans un exemple d'API en production(surement la prochaine leçon) le code sera beaucoup plus fourni*. Pour la prochaine fonction on récupérera une voiture en fonction de certaines informations sur la voiture en paramètre en utilisant le paramètre req de la callback de la fonction get. Mais il y a deux manière de récupérer le paramètre soit à travers `req.query` ou à travers `req.params` le choix de l'un des deux va changer comment coder la fonction. On va donc voir les deux.
 #### req.params
-**req.params** va s'occuper de parser les paramètre au niveau de la route et pas de l'URL. La différence entre la route et l'url est assez subtile mais disons que l'URL est l'entité en entière par exemple le "https://localhost:3000/cars" là où la route est plus une définission de chemin par exemple `api/cars/`. Pour utilisé req.params on va d'abord dire au router de notre api qu'on attent une valeur au niveau de la route comme ceci: 
+**req.params** va s'occuper de parser les paramètre au niveau de la route et pas de l'URL. La différence entre la route et l'URL est assez subtile mais disons que l'URL est l'entité en entière par exemple le "https://localhost:3000/cars" là où la route est plus une définission de chemin par exemple `api/cars/`. Pour utilisé req.params on va d'abord dire au router de notre api qu'on attend une valeur au niveau de la route comme ceci: 
 ```js
 app.get('/api/cars/:id', (req, res)=>{
     const id  = req.params.id
@@ -155,8 +153,8 @@ app.get('/api/cars/:id', (req, res)=>{
     res.send(car);
 });
 ```
-Comme vous pouvez la route a une forme particulière avec son `:id`, ce `:id` va permettre de dire à l'api qu'ici on attent  une variable et c'est cette variable qu'on va récupérer avec le `req.params.id`.
-l'URl aura donc cette tête: `http://localhost:3000/api/cars/2`
+Comme vous pouvez la route a une forme particulière avec son `:id`, ce `:id` va permettre de dire à l'api qu'ici on attend  une variable et c'est cette variable qu'on va récupérer avec le `req.params.id`.
+l'URL aura donc cette tête: `http://localhost:3000/api/cars/2`
 #### req.query
 Pour le **req.query** la requête va totalement changer de tête puisque les paramètre vont être parser après un `?` (un query en anglais) et on a pas besoin de spécifier au router de l'api avant. la route aura donc cette tête:
 ```js
@@ -168,18 +166,17 @@ app.get('/api/car', (req, res)=>{
 });
 ```
 notez que vous pouvez mettre autant paramètre que vous voulez et que donc, vous devez réfléchir en amont à ce que vous voulez récupérer sachant que si les paramètres ne sont pas pris en compte dans le code c'est comme s'ils n'existent pas.
-L'url pour cettre route ressemblera à ça: `http://localhost:3000/api/car?id=2&date=2019`.
+L'URL pour cette route ressemblera à ça: `http://localhost:3000/api/car?id=2&date=2019`.
 
-Nous avons donc mis en place nos routes `GET` mais celà ne s'arrête pas là ils nous reste `POST`(pour le CREATE), `PATCH`(pour le UPDATE), `DELETE`(pour le DELETE). Passons donc au POST.
+Nous avons donc mis en place nos routes `GET` mais cela ne s'arrête pas là ils nous reste `POST`(pour le CREATE), `PATCH`(pour le UPDATE), `DELETE`(pour le DELETE). Passons donc au POST.
 
 ### CREATE
 
-pour cette fonctionnalité on passe par la méthode POST du protocole HTTP, mais ce sera un peu spécial cette fois ci. Dans le cas de la méthode POST on va passer les données dans le corps de la requête, le body, et pour se faire on va devoir le parser, c'est là qu'intervient `body-parser` qui va passer en tant que middleware à express comme montrer ci dessous
+pour cette fonctionnalité on passe par la méthode POST du protocole HTTP, mais ce sera un peu spécial cette fois ci. Dans le cas de la méthode POST on va passer les données dans le corps de la requête, le body, et pour se faire on va devoir le parser, c'est là qu'intervient le middleware `json` intégrer au à express que l'on va intégrer comme ceci:
 ```js
-const bodyParser = require("body-parser");
-app.use(bodyParser.json())
+app.use(express.json())
 ```
-body-parser va donc s'occuper de parser les données que l'API va recevoir. Maintenant il faut que l'on créé la route qui va s'occuper de recevoir ces données donc on va créer une route post cette fois ci:
+Ce middleware va donc s'occuper de parser les données que l'API va recevoir. Maintenant il faut que l'on créé la route qui va s'occuper de recevoir ces données donc on va créer une route post cette fois ci:
 ```js
 app.post('/api/cars', (req, res)=> {
  const body = req.body;
@@ -215,7 +212,7 @@ app.delete('/api/car/:id', (req, res)=>{
 });
 ```
 ![delete](images/postman-delete.png)
-Et normalement vous devriez avoir votre CRUD d'opperationnel, Mais une API reste ne se résume pas qu'à ça, car on doit aussi savoir si notre opération est un succès ou un échec et c'est les là que les code de réponses entre jeux.
+Et normalement vous devriez avoir votre CRUD d'opérationnel, Mais une API reste ne se résume pas qu'à ça, car on doit aussi savoir si notre opération est un succès ou un échec et c'est les là que les code de réponses entre jeux.
 
 ### Status Codes
 Les Status Codes sont classées de la manière suivante:
@@ -227,16 +224,15 @@ vous trouverez une liste de des [code](https://developer.mozilla.org/fr/docs/Web
 
 
 On, va donc rajouter les codes de réussites et ensuite on ira gérer les erreurs. Les codes de succès sont assez simple à rajouter il suffit de le mettre en préfixe du send, de cette manière `res.status({status code}).send({notre message})`.
-Pour le cas du create ce sera un code 201 donc la réponse ressemblera à ça `res.status(201).send({message: "Car added to the db", entity: car})` et pour le restre pon utilisera du 200 *notez que pour le delete on peut mettre du 204 à condition que la requête soit vide*. 
+Pour le cas du create ce sera un code 201 donc la réponse ressemblera à ça `res.status(201).send({message: "Car added to the db", entity: car})` et pour le reste on utilisera du 200 *notez que pour le delete on peut mettre du 204 à condition que la requête soit vide*. 
 
 On peut ensuite passé à la gestion d'erreurs dans le cas des get il faut vérifier que la ressources puisse être trouvé. On va donc effectuer les vérification et si ce n'est pas le cas on enverra code d'erreur 404(le fameux) avec le message "resource not found" ensuite il faut que l'on vérifie si les données envoyés sont bonnes, si notre champs proprio est bien un texte et pas nombre, dans le cas échéant on mettra une erreur 400 suivi du message (Bad request). 
 
 On se retrouve donc avec le code ci dessous:
 ```js
 const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
-app.use(bodyParser.json())
+app.use(express.json())
 
 let cars = [];
 
@@ -274,7 +270,7 @@ app.get('/api/cars', (req, res)=> {
 app.get('/api/cars/:id', (req, res)=>{
     const id  = req.params.id
     if(!cars[id-1]){
-        res.status(404).send("resources not found");
+        res.status(404).send("ressources not found");
         return;
     }
     res.status(200).send(car);
@@ -282,14 +278,11 @@ app.get('/api/cars/:id', (req, res)=>{
 
 app.post('/api/cars', (req, res)=> {
  const body = req.body;
- if(!req.body.id ||!req.body.name || !req.body.proprio || !req.body.date) {
+ if(!body.id ||!body.name || !body.proprio || !body.date) {
      res.status(400).send("Bad Request");
      return
  }
- if((typeof req.body.name !== 'string' || req.body.name instanceof String === false) ||(typeof req.body.proprio !== 'string' || req.body.proprio instanceof String === false) || (typeof req.body.date !== 'number' || req.body.date instanceof Number === false) || (typeof req.body.id !== 'number' || req.body.id instanceof Number === false)){
-     res.status(400).send("Bad Request");
-     return
- }
+ 
  cars.push(body);
  res.status(201).send({
      message: "Entity added to the db",
@@ -300,7 +293,7 @@ app.post('/api/cars', (req, res)=> {
 app.patch('/api/car/:id', (req, res)=>{
     const id = req.params.id
     if(!cars[id-1]){
-        res.status(404).send("resources not found");
+        res.status(404).send("ressources not found");
     } 
     let proprio = req.body.proprio;
     if(typeof proprio !== 'string' || proprio instanceof String === false) {
@@ -311,11 +304,10 @@ app.patch('/api/car/:id', (req, res)=>{
     res.status(200).send(cars[id-1]);
 });
 
-
 app.delete('/api/car/:id', (req, res)=>{
     const id = req.params.id;
     if(!cars[id-1]) {
-        res.status(404).send("resource not found");
+        res.status(404).send("Ressource not found");
         return;
     }
     cars.splice(id-1, 1);
@@ -326,4 +318,4 @@ app.listen(3000, ()=>{
     console.log('app running on port 3000');
 });
 ```
-Voilà vous avez votre premier APPI REST
+Voilà vous avez votre premier API REST
