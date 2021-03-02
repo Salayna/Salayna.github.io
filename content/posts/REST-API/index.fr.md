@@ -1,7 +1,7 @@
 ---
-title: "Introduction aux API REST (Draft #2 surement quelques fautes à recorriger)"
+title: "Introduction aux API REST avec NodeJS"
 date: 2021-03-01
-description: Introduction aux API REST(avec un tutoriel)
+description: Introduction aux API REST(avec un tutoriel avec NodeJS)
 menu:
   sidebar:
     name: Introduction aux API REST
