@@ -1,6 +1,6 @@
 ---
 title: "Getting started in REST APIs with NodeJS"
-date: 2021-03-01
+date: 2021-03-03
 description: Getting started in REST APIs with a NodeJS Tutorial
 menu:
   sidebar:

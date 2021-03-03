@@ -1,6 +1,6 @@
 ---
 title: "Introduction aux API REST avec NodeJS"
-date: 2021-03-01
+date: 2021-03-03
 description: Introduction aux API REST(avec un tutoriel avec NodeJS)
 menu:
   sidebar:
