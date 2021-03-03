@@ -32,7 +32,7 @@ REST APIs will rely on http methods to manage their requests.
 ## Project setup
 To begin we will initialize our project as follows:
 - we will first create our folder (the name doesn’t matter)
-- make sure that Node is installed with the ``node -v```' command if this is not the case I refer you to the official website https://nodejs.org/en/download/
+- make sure that Node is installed with the ``node -v``' command if this is not the case I refer you to the official website https://nodejs.org/en/download/
 - Once Node is installed, we will perform the command ``npm init``, we should have a prompt where we fill in trivial information and then we will have a file `package.json' at the root of our project.
 - we will then create an index.js file also the root of the project.
 
@@ -47,7 +47,7 @@ The package.json file serves as a control file for your project. The name, autho
 - Express: for web server creation and query management;
 - Nodemon: so you don’t always have to restart your app while you develop
 
-To install these dependencies we will use the command `npm install express'
+To install these dependencies we will use the command `npm install express`
 You will note that I did not put nodemon in the command just, it is because I want to have nodemon that during development and not in production, so I will install it in **dev dependency** like this:
 `npm install --save-dev nodemon'
 Your package.json file should now have these two objects:
@@ -59,7 +59,7 @@ Your package.json file should now have these two objects:
     "nodemon": "^2.0.7"
   }
  ```
-and your folder now has a `package-lock.json' file that lists the dependencies of your dependencies, which are contained in the nodes_modules folder (I strongly advise against touching these two entities, but you can see if you are curious by nature).    
+and your folder now has a `package-lock.json` file that lists the dependencies of your dependencies, which are contained in the nodes_modules folder (I strongly advise against touching these two entities, but you can see if you are curious by nature).    
  Now that our project is in place, we can start coding.
  ## Creating the web server and sending basic text
   In the index.js file we will add the following code:
@@ -72,8 +72,8 @@ function sendStartingMessage(port) {
 }
 app.listen(3000, startingMessage(3000));
   ```
-Now by running the `node . .' command at the root of our project we should have the message "app running on port 3000" in the terminal. Okay, but how does that work? Let’s go line by line.  
-In the first two lines we will import our module with the function `require("{the name of the module to import}")`, which we will create an object in the variable `app'. We will then create a listening port with the `listen()`function which takes as parameter the listening port. You will note that `listen()' also has a rather special parameter which is the `sendStartingMessage()' function, this is called a callback and this callback will only be performed if the server is properly initialized. Let us make a very small change to it.
+Now by running the `node .` . command at the root of our project we should have the message "app running on port 3000" in the terminal. Okay, but how does that work? Let’s go line by line.  
+In the first two lines we will import our module with the function `require("{the name of the module to import}")`, which we will create an object in the variable `app`. We will then create a listening port with the `listen()` function which takes as parameter the listening port. You will note that `listen()` also has a rather special parameter which is the `sendStartingMessage()' function, this is called a callback and this callback will only be performed if the server is properly initialized. Let us make a very small change to it.
 ```js
 const express = require("express");
 const app = express();
@@ -88,7 +88,7 @@ app.get('/', (req, res)=> {
     res.send("Welcome to this demo API")
 });
 ```
-We have just added a GET with the `app.get() function which takes as parameter the route of the resource in this case the root '/' and a callback whose arguments will be **req**: the request, **res**: the response we will then say, in this callback, to our server sent as a "Welcome to this demo API" response;
+We have just added a GET with the `app.get()` function which takes as parameter the route of the resource in this case the root '/' and a callback whose arguments will be **req**: the request, **res**: the response we will then say, in this callback, to our server sent as a "Welcome to this demo API" response;
 Before testing this request we will just add a small script that will simplify our life in the `package.json`. in the scripts object add: 
 ```"dev:start": "nodemon ." ``  
 Your scripts object should now look like this:
@@ -151,7 +151,7 @@ app.get('/api/cars/:id', (req, res)=>{
     res.send(car);
 });
 ```
-As you can see the route has a particular shape with its `:id', this `:id`will let you tell the api that here you are expecting a variable and it is this variable that you will retrieve with the `req.params.id'.
+As you can see the route has a particular shape with its `:id`, this `:id` will let you tell the api that here you are expecting a variable and it is this variable that you will retrieve with the `req.params.id`.
 the URL will have this head: `http://localhost:3000/api/cars/2`
 ##### req.query
 For the **req.query** the request will completely change its head since the parameters will be parsed after a ``?```) (a query in English) and we do not need to specify to the router of the api before. the road will have this head:
@@ -221,7 +221,7 @@ Status Codes are classified as follows:
 you will find a list of [code](https://developer.mozilla.org/en/docs/Web/HTTP/Status) here.
 
 
-So we’ll, uh, add in the success codes and then we’ll go deal with the mistakes. Success codes are quite simple to add just put it in the prefix of the send, in this way res.status({status code}). send({our message})`.
+So we’ll, uh, add in the success codes and then we’ll go deal with the mistakes. Success codes are quite simple to add just put it in the prefix of the send, in this way `res.status({status code}). send({our message})`.
 For the create case it will be a 201 code so the response will look like that `res.status(201). send({message: "Car added to the db", entity: car}) and for the rest we use 200 *note that to delete we can put 204 provided the request is empty*. 
 
 We can then move to error management in the case of get you must check that the resources can be found. So we will perform the checks and if this is not the case we will send error code 404(the famous) with the message "resource not found" then we must check if the data sent is good, if our property field is a text and not a number, if applicable, an error 400 will be placed followed by the message (Bad request). 
