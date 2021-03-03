@@ -9,7 +9,7 @@ menu:
     weight: 10
 ---
 # Qu'est ce qu'une API
-Une API (Application Programming Interface) est un set de méthodes, de variables, et de protocoles permettent d'interfacer deux applications. On distingue plusieurs types d'API:  
+Une API (Application Programming Interface) est un set de méthodes, de variables, et de protocoles permettant d'interfacer deux applications. On distingue plusieurs types d'API:  
 - d'un côté on peut avoir une API qui servir à utilisé les fonctions d'une autre application, pour par exemple intégrer certains modules à d'autres application  
 - de l'autre côté on peut avoir une API qui va servir des données à notre application comme les APIs en GraphQL ou Rest(ce que l'on va voir aujourd'hui)
 ## Le modèle REST
