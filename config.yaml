@@ -10,6 +10,7 @@ languages:
   fr:
     languageName: Français
     weight: 1
+googleAnalytics: G-KRWYM94MB3
 disqusShortName: salayna
 enableEmoji: true
 params:
