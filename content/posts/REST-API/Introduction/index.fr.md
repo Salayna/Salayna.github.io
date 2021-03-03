@@ -6,6 +6,7 @@ menu:
   sidebar:
     name: Introduction aux API REST
     identifier: api-rest-introduction
+    parent: api-rest
     weight: 10
 ---
 # Qu'est ce qu'une API

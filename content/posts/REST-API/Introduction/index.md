@@ -6,6 +6,7 @@ menu:
   sidebar:
     name: Getting Started in REST APIs with NodeJS
     identifier: api-rest-introduction
+    parent: api-rest
     weight: 10
 ---
 # What is an API
