@@ -10,7 +10,7 @@ languages:
   fr:
     languageName: Français
     weight: 1
-
+disqusShortName: salayna
 enableEmoji: true
 params:
   background: images/site/Clay.png
