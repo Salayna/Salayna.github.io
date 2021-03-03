@@ -323,3 +323,5 @@ Voilà vous avez votre premier API REST
 Les prochains cours de cette série seront dédiés à la création d'API avec une base données en NoSQL(comme mongoDB) et une en SQL(comme PostgreSQL) avec et sans ORM(j'expliquerai ce qu'est un ORM dans un prochain cours).
 
 N'hésitez pas à me faire des retours concernant mes cours en commentaire juste en dessous ! À bientôt !
+
+Le répo du projet: [API REST example](https://github.com/Salayna/api-rest-example)
