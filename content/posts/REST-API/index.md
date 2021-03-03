@@ -321,3 +321,5 @@ Voilà ! You have your first REST API !
 The next classes of the serie will be on making a REST API with a NoSQL database(like MongoDB) and One with a SQL Database(like PostgreSQL) with and without and ORM(I'll explain everything in a next class).
 
 Do not hesitate to give me feedbacks bin the comment section just below ! See you soon !
+
+here is the project repository: [API REST example](https://github.com/Salayna/api-rest-example)
