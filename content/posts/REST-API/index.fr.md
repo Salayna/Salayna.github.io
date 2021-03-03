@@ -15,7 +15,7 @@ Une API (Application Programming Interface) est un set de méthodes, de variable
 ## Le modèle REST
 Le modèle **REST**(REpresentational State Transfer) est un ensemble de règles et de contraintes à respecter pour la création de services web. Ces services permettent manipulation de resources web et se repose lourdement sur le protocoles HTTP.
 ### Le protocole HTTP en bref
-Le protocole HTTP est l'un des protocoles principale du World Wide Web(les fameux www). Le HTTP moderne se repose lui même sur le MIME(Multipurpose Internet Mail Extensions) qui définis les fichiers transferable à travers internet(comme son nom l'indique le MIME a été d'abord pensé pour l'envoie de différents types de fichiers par mail)
+Le protocole HTTP est l'un des protocoles principale du World Wide Web(les fameux www). Le HTTP moderne se repose lui même sur le MIME(Multipurpose Internet Mail Extensions) qui définis les fichiers transférable à travers internet(comme son nom l'indique le MIME a été d'abord pensé pour l'envoie de différents types de fichiers par mail)
 #### Les méthodes
 Le protocole compte des méthodes qui vont définir les actions possible sur les ressources, parmis lesquels on peut compter:
 - GET est la méthode qui permet de demander une ressource au serveur
@@ -39,7 +39,7 @@ Pour commencer nous allons initialiser notre projet comme ceci:
 Avant d'aller plus loin on va d'abord expliquer quelques points vu au dessus:
 ### Qu'est-ce que NodeJS ? 
 NodeJS est une plateforme logiciel qui permet de booster le Javascript qui, avant tout ça était surtout un langages utilisé pour faire de belles animations et rendre un peu plus dynamique les sites web. Le NodeJS permet au Javascript d'être utilisé côté serveur et de faire un bon nombre de choses assez incroyable (programmation asynchrone etc...)
-### À quoi sert le fichier package.json
+### À quoi sert le fichier package.json ?
 le fichier package.json sert de fichier de contrôle pour votre projet. Le nom, l'auteur, des script utile, les dépendances et pleins d'autres informations sont stocké à l'intérieur de ce fichier.  
 
 ### Ajout de dépendances
@@ -112,21 +112,21 @@ let cars = [];
 let car1 = {
     id: 1,
     name: "Tesla Model S",
-    proprio: "Mr Iervese",
+    proprio: "Mr Ren",
     date: 2017,
 }
 
 let car2 = {
     id: 2,
     name: "Lamborghini Urus",
-    proprio: "Mr Hagot",
+    proprio: "Mr Pierre",
     date: 2019,
 }
 
 let car3 = {
     id: 3,
     name: "Ferrari Roma",
-    proprio: "Mr Georges",
+    proprio: "Mr Henry",
     date: 2016,
 }
 
@@ -239,21 +239,21 @@ let cars = [];
 let car1 = {
     id: 1,
     name: "Tesla Model S",
-    proprio: "Mr Iervese",
+    proprio: "Mr Ren",
     date: 2017,
 }
 
 let car2 = {
     id: 2,
     name: "Lamborghini Urus",
-    proprio: "Mr Hagot",
+    proprio: "Mr Pierre",
     date: 2019,
 }
 
 let car3 = {
     id: 3,
     name: "Ferrari Roma",
-    proprio: "Mr Georges",
+    proprio: "Mr Henry",
     date: 2016,
 }
 
@@ -319,3 +319,7 @@ app.listen(3000, ()=>{
 });
 ```
 Voilà vous avez votre premier API REST
+
+Les prochains cours de cette série seront dédiés à la création d'API avec une base données en NoSQL(comme mongoDB) et une en SQL(comme PostgreSQL) avec et sans ORM(j'expliquerai ce qu'est un ORM dans un prochain cours).
+
+N'hésitez pas à me faire des retours concernant mes cours, par mail à cette adresse: salaynadoukoure@gmail.com

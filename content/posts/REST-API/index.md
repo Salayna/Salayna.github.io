@@ -8,49 +8,49 @@ menu:
     identifier: api-rest-introduction
     weight: 10
 ---
-# Qu'est ce qu'une API
-Une API (Application Programming Interface) est un set de méthodes, de variables, et de protocoles permettent d'interfacer deux applications. On distingue plusieurs types d'API:  
-- d'un côté on peut avoir une API qui servir à utilisé les fonctions d'une autre application, pour par exemple intégrer certains modules à d'autres application  
-- de l'autre côté on peut avoir une API qui va servir des données à notre application comme les APIs en GraphQL ou Rest(ce que l'on va voir aujourd'hui)
-## Le modèle REST
-Le modèle **REST**(REpresentational State Transfer) est un ensemble de règles et de contraintes à respecter pour la création de services web. Ces services permettent manipulation de resources web et se repose lourdement sur le protocoles HTTP.
-### Le protocole HTTP en bref
-Le protocole HTTP est l'un des protocoles principale du World Wide Web(les fameux www). Le HTTP moderne se repose lui même sur le MIME(Multipurpose Internet Mail Extensions) qui définis les fichiers transferable à travers internet(comme son nom l'indique le MIME a été d'abord pensé pour l'envoie de différents types de fichiers par mail)
-#### Les méthodes
-Le protocole compte des méthodes qui vont définir les actions possible sur les ressources, parmis lesquels on peut compter:
-- GET est la méthode qui permet de demander une ressource au serveur
-- POST permet d'envoyer des données au serveur en vue d'une création de ressource
-- PUT permet aussi d'envoyé des données au serveur en vue d'un ajout ou d'une modification totale de la ressource
-- DELETE permet de supprimer la ressource visé
-- PATCH permet d'effectuer une modification partiel de la ressource    
+# What is an API
+An Application Programming Interface (API) is a set of methods, variables, and protocols to connect two applications. There are several types of APIs:
+- on the one hand we can have an API that can be used to use the functions of another application, for example to integrate certain modules with other applications
+- on the other hand we can have an API that will serve data to our application like APIs in GraphQL or Rest (what we will see today)
+## The REST model
+The **REST**(REpresentational State Transfer) model is a set of rules and constraints to be followed when creating web services. These services allow manipulation of web resources and rely heavily on HTTP protocols.
+### Quick overview of the HTTP Protocol
+The HTTP protocol is one of the main protocols of the World Wide Web (the famous www). The modern HTTP relies itself on the MIME (Multipurpose Internet Mail Extensions) which defines the files transferable through the internet (as its name indicates the MIME was first thought to send different types of files by mail)
+#### HTTP methods
+The protocol includes methods that will define possible actions on resources, among which we can count:
+- GET is the method for requesting a resource from the server
+- POST allows data to be sent to the server for resource creation
+- PUT also allows data to be sent to the server for a total addition or modification of the resource
+- DELETE removes the target resource
+- PATCH allows a partial modification of the resource
 
-Les APIs REST vont se reposer sur les méthodes http pour gérer leurs requêtes.
+REST APIs will rely on http methods to manage their requests.
 
-# Implémentons
-*ps: On utilisera du NodeJS pour ce tutoriel, le but de comprendre comment ça marche, vous pourrez trouver un repos github contenant le code du tutoriel à la fin de celui ci*
+# Let's code
+*ps: We will use NodeJS for this tutorial, in order to understand how it works, you can find a github rest containing the tutorial code at the end of it*
 
-## Initialisation du projet
-Pour commencer nous allons initialiser notre projet comme ceci:
-- on va d'abord créer notre dossier (le nom importe peu)
-- on s'assure que Node est installé avec la commande ``node -v`` si ce n'est pas le cas je vous renvoie vers le site officiel https://nodejs.org/en/download/
-- Une fois Node installé on va effectuer la commande ``npm init``,on devrait avoir un prompt où remplir des informations trivial à la suite de quoi on aura à la racine de notre projet un fichier `package.json`.
-- on va ensuite créer un fichier index.js aussi la racine du projet.
+## Project setup
+To begin we will initialize our project as follows:
+- we will first create our folder (the name doesn’t matter)
+- make sure that Node is installed with the ``node -v```' command if this is not the case I refer you to the official website https://nodejs.org/en/download/
+- Once Node is installed, we will perform the command ``npm init``, we should have a prompt where we fill in trivial information and then we will have a file `package.json' at the root of our project.
+- we will then create an index.js file also the root of the project.
 
-Avant d'aller plus loin on va d'abord expliquer quelques points vu au dessus:
-### Qu'est-ce que NodeJS ? 
-NodeJS est une plateforme logiciel qui permet de booster le Javascript qui, avant tout ça était surtout un langages utilisé pour faire de belles animations et rendre un peu plus dynamique les sites web. Le NodeJS permet au Javascript d'être utilisé côté serveur et de faire un bon nombre de choses assez incroyable (programmation asynchrone etc...)
-### À quoi sert le fichier package.json
-le fichier package.json sert de fichier de contrôle pour votre projet. Le nom, l'auteur, des script utile, les dépendances et pleins d'autres informations sont stocké à l'intérieur de ce fichier.  
+Before going any further we will first explain some points seen above:
+### What is NodeJS ? 
+NodeJS is a software platform that boosts Javascript, which was primarily a language used to make nice animations and make websites a little more dynamic. The NodeJS allows Javascript to be used on the server side and to do a lot of pretty amazing things (asynchronous programming etc...)
+### What is the package.json ?
+The package.json file serves as a control file for your project. The name, author, useful scripts, dependencies and lots of other information are stored inside this file.  
 
-### Ajout de dépendances
- On va avoir besoin de quelques dépendances pour ce projet.
- - Express: pour la création du serveur web et la gestion de requêtes
- - Nodemon: pour ne pas avoir à toujours redémarrer notre app pendant que l'on développe
+### Let's add our dependencies
+ We’re gonna need some dependencies on this project.
+- Express: for web server creation and query management;
+- Nodemon: so you don’t always have to restart your app while you develop
 
- Pour installer ces dépendances on va utiliser la commande `npm install express`  
- Vous noterez que je n'ai pas mis nodemon dans la commande juste, c'est parce que je veux avoir nodemon que pendant le développement et pas en production, donc je vais l'installer en **dev dependency** comme ceci:  
- `npm install --save-dev nodemon`  
- Votre ficher `package.json` devrait maintenant avoir ces deux objets:  
+To install these dependencies we will use the command `npm install express'
+You will note that I did not put nodemon in the command just, it is because I want to have nodemon that during development and not in production, so I will install it in **dev dependency** like this:
+`npm install --save-dev nodemon'
+Your package.json file should now have these two objects:
  ```json
  "dependencies": {
     "express": "^4.17.1"
@@ -59,12 +59,10 @@ le fichier package.json sert de fichier de contrôle pour votre projet. Le nom, 
     "nodemon": "^2.0.7"
   }
  ```
- et votre dossier compte maintenant un fichier `package-lock.json` qui répertorie les dépendances de vos dépendances, qui sont contenue dans le dossier nodes_modules(Je vous déconseille fortement de toucher à ces deux entités, mais vous pouvez regarder si vous êtes de nature curieuse).
-  
- maintenant que notre projet est en place, on peut commencer à coder.
-
- ## Création de notre serveur web et envoie de texte
-  Dans le ficher index.js on va ajouter le code suivant:
+and your folder now has a `package-lock.json' file that lists the dependencies of your dependencies, which are contained in the nodes_modules folder (I strongly advise against touching these two entities, but you can see if you are curious by nature).    
+ Now that our project is in place, we can start coding.
+ ## Creating the web server and sending basic text
+  In the index.js file we will add the following code:
   ```js
 const express = require("express");
 const app = express();
@@ -74,8 +72,8 @@ function sendStartingMessage(port) {
 }
 app.listen(3000, startingMessage(3000));
   ```
-Maintenant en effectuant la commande `node .` à la racine de notre projet on devrait avoir le message "app running on port 3000" dans le terminal. Ok, mais comment ça se fait ? Reprenons le code ligne par ligne.  
-Dans les deux première lignes on va importer notre module avec la fonction `require("{le nom du module à importer}")`, dont on va créer un objet dans la variable `app`. On va ensuite créer un port d'écoute avec la fonction `listen()` qui prends en paramètre le port d'écoute. Vous noterez que `listen()` a aussi un paramètre assez particulier qui est la fonction `sendStartingMessage()`, c'est ce qu'on appelle un callback et ce callback ne va être effectuer que si le serveur est bien initialisé. Effectuons un tout petit changement à ce dernier.  
+Now by running the `node . .' command at the root of our project we should have the message "app running on port 3000" in the terminal. Okay, but how does that work? Let’s go line by line.  
+In the first two lines we will import our module with the function `require("{the name of the module to import}")`, which we will create an object in the variable `app'. We will then create a listening port with the `listen()`function which takes as parameter the listening port. You will note that `listen()' also has a rather special parameter which is the `sendStartingMessage()' function, this is called a callback and this callback will only be performed if the server is properly initialized. Let us make a very small change to it.
 ```js
 const express = require("express");
 const app = express();
@@ -84,68 +82,68 @@ app.listen(3000, ()=>{
     console.log('app running on port 3000');
 });
 ```
-Votre server fonctionne maintenant mais vous ne pouvez rien faire, on va donc créer notre premier endpoint juste au dessus de notre `app.listen()`:
+Your server is working now but you can’t do anything, so we’re going to create our first endpoint right above our `app.listen()':
 ```js
 app.get('/', (req, res)=> {
     res.send("Welcome to this demo API")
 });
 ```
-Nous venons tout juste de rajouter un GET avec la fonction `app.get()` qui prends en paramètre la route de la ressource dans ce cas ci la racine '/' et une callback dont les arguments seront **req**: la requête, **res**: la réponse on va ensuite dire, dans ce callback, à notre serveur d'envoyé comme réponse "Welcome to this demo API";
-Avant de tester cette requête on va juste rajouter un petit script qui va nous simplifier la vie dans le `package.json`. dans l'objet scripts ajoutez: 
-``"dev:start": "nodemon ."``  
-votre object scripts devrait maintenant ressembler à ça: 
+We have just added a GET with the `app.get() function which takes as parameter the route of the resource in this case the root '/' and a callback whose arguments will be **req**: the request, **res**: the response we will then say, in this callback, to our server sent as a "Welcome to this demo API" response;
+Before testing this request we will just add a small script that will simplify our life in the `package.json`. in the scripts object add: 
+```"dev:start": "nodemon ." ``  
+Your scripts object should now look like this:
 ```json
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:start": "nodemon ."
   },
 ```
-vous pouvez ensuite interrompre l'exécution de votre code et taper la commande ``npm run dev:start`` dans le terminal. maintenant à chaque fois que vous sauvegarderez vos modifications le code sera exécuté automatiquement.
-Pour tester si notre GET fonctionne, rien de plus simple, on va juste aller sur notre navigateur et allez à l'adresse suivante: http://localhost:3000/
-vous devriez avoir ce résultat.  
+you can then stop the execution of your code and type the command ``npm run dev:start``in the terminal. now each time you save your changes the code will be executed automatically.
+To test if our GET works, nothing is simpler, we will just go to our browser and go to the following address: http://localhost:3000/
+You should have that result.  
 ![response](images/api-message.png).
 
-Avant d'aller plus loin créer des données factices pour notre API. Créons donc un tableau cars qui sera un tableau de voiture
+Before going any further create dummy data for our API. So let’s create a cars array that will be a car array
 ```js
 let cars = [];
 
 let car1 = {
     id: 1,
     name: "Tesla Model S",
-    proprio: "Mr Iervese",
+    proprio: "Mr Ren",
     date: 2017,
 }
 
 let car2 = {
     id: 2,
     name: "Lamborghini Urus",
-    proprio: "Mr Hagot",
+    proprio: "Mr Pierre",
     date: 2019,
 }
 
 let car3 = {
     id: 3,
     name: "Ferrari Roma",
-    proprio: "Mr Georges",
+    proprio: "Mr Henry",
     date: 2016,
 }
 
 cars.push(car1, car2, car3);
 ```
-## API CRUD
-Dans la partie ci-dessous on va implémenter un CRUD (Create Read Update Delete) sur les voitures.
+## CRUD on API
+In the part below we will implement a CRUD (Create Read Update Delete) on cars.
 
 ### Read
-Le Read passe donc par la méthode GET du protocole HTTP.On va d'abord donc commencer par le Read étant la fonction la plus simple, on fera trois lecture une qui permettra de récupérer toutes les voitures et deux qui permettront de récupérer une voiture en fonction de ses attributs.
-Pour le premier Read on va rajouter un endpoint sur la route '/cars'. et ce endpoint renverra juste le contenue de notre tableau cars.
+The Read goes through the GET method of the HTTP protocol.We will first start with the Read being the simplest function, we will make three read one that will recover all cars and two that will recover a car according to its attributes.
+For the first Read we will add an endpoint on the road '/cars'. and this endpoint will just return the contents of our table cars.
 ```js
 app.get('api/cars', (req, res)=> {
     res.send(cars);
 })
 ```
-Assez simple comme première fonction *notez que je fais ici abstraction de tout ce qui est base de données dans un exemple d'API en production(surement la prochaine leçon) le code sera beaucoup plus fourni*. Pour la prochaine fonction on récupérera une voiture en fonction de certaines informations sur la voiture en paramètre en utilisant le paramètre req de la callback de la fonction get. Mais il y a deux manière de récupérer le paramètre soit à travers `req.query` ou à travers `req.params` le choix de l'un des deux va changer comment coder la fonction. On va donc voir les deux.
+Quite simple as a first function *note that I am ignoring everything that is database in an example of an API in production (probably the next lesson) the code will be much more provided*. For the next function we will recover a car based on some information about the car as parameter using the req parameter of the callback of the get function. But there are two ways to retrieve the parameter either through req.query' or through req.params' the choice of one of the two will change how to code the function. So we’re going to see both.
 #### req.params
-**req.params** va s'occuper de parser les paramètre au niveau de la route et pas de l'URL. La différence entre la route et l'URL est assez subtile mais disons que l'URL est l'entité en entière par exemple le "https://localhost:3000/cars" là où la route est plus une définission de chemin par exemple `api/cars/`. Pour utilisé req.params on va d'abord dire au router de notre api qu'on attend une valeur au niveau de la route comme ceci: 
+**req.params** will parse the parameters at the route level and not the URL. The difference between the route and the URL is quite subtle but let’s say that the URL is the entire entity for example the "https://localhost:3000/cars" where the route is more a path definition for example `api/cars/`. To use req.params we will first tell the router of our api that we expect a value at the level of the route like this: 
 ```js
 app.get('/api/cars/:id', (req, res)=>{
     const id  = req.params.id
@@ -153,10 +151,10 @@ app.get('/api/cars/:id', (req, res)=>{
     res.send(car);
 });
 ```
-Comme vous pouvez la route a une forme particulière avec son `:id`, ce `:id` va permettre de dire à l'api qu'ici on attend  une variable et c'est cette variable qu'on va récupérer avec le `req.params.id`.
-l'URL aura donc cette tête: `http://localhost:3000/api/cars/2`
-#### req.query
-Pour le **req.query** la requête va totalement changer de tête puisque les paramètre vont être parser après un `?` (un query en anglais) et on a pas besoin de spécifier au router de l'api avant. la route aura donc cette tête:
+As you can see the route has a particular shape with its `:id', this `:id`will let you tell the api that here you are expecting a variable and it is this variable that you will retrieve with the `req.params.id'.
+the URL will have this head: `http://localhost:3000/api/cars/2`
+##### req.query
+For the **req.query** the request will completely change its head since the parameters will be parsed after a ``?```) (a query in English) and we do not need to specify to the router of the api before. the road will have this head:
 ```js
 app.get('/api/car', (req, res)=>{
  const id = req.query.id;
@@ -165,18 +163,18 @@ app.get('/api/car', (req, res)=>{
  res.send(car); 
 });
 ```
-notez que vous pouvez mettre autant paramètre que vous voulez et que donc, vous devez réfléchir en amont à ce que vous voulez récupérer sachant que si les paramètres ne sont pas pris en compte dans le code c'est comme s'ils n'existent pas.
-L'URL pour cette route ressemblera à ça: `http://localhost:3000/api/car?id=2&date=2019`.
+Note that you can set as many parameters as you want, so you have to think ahead of time about what you want to recover knowing that if the parameters are not taken into account in the code it is as if they do not exist.
+The URL for this route will look like this: `http://localhost:3000/api/car? id=2&date=2019'.
 
-Nous avons donc mis en place nos routes `GET` mais cela ne s'arrête pas là ils nous reste `POST`(pour le CREATE), `PATCH`(pour le UPDATE), `DELETE`(pour le DELETE). Passons donc au POST.
+So we set up our `GET`s routes, but that does not stop there. We still have `POST`(for the CREATE), `PATCH`(for the UPDATE), `DELETE`(for the DELETE). Let’s go to POST.
 
 ### CREATE
 
-pour cette fonctionnalité on passe par la méthode POST du protocole HTTP, mais ce sera un peu spécial cette fois ci. Dans le cas de la méthode POST on va passer les données dans le corps de la requête, le body, et pour se faire on va devoir le parser, c'est là qu'intervient le middleware `json` intégrer au à express que l'on va intégrer comme ceci:
-```js
+For this feature we go through the POST method of the HTTP protocol, but it will be a bit special this time. In the case of the POST method we will pass the data into the body of the request, the body, and to do so we will have to parse it, this is where the middleware `json™s integrates into the express that we will integrate like this:
+````js
 app.use(express.json())
-```
-Ce middleware va donc s'occuper de parser les données que l'API va recevoir. Maintenant il faut que l'on créé la route qui va s'occuper de recevoir ces données donc on va créer une route post cette fois ci:
+````
+This middleware will therefore parse the data that the API will receive. Now we have to create the road that will take care of receiving this data so we will create a road post this time:
 ```js
 app.post('/api/cars', (req, res)=> {
  const body = req.body;
@@ -184,13 +182,13 @@ app.post('/api/cars', (req, res)=> {
  res.send(body);
 });
 ```
-Tester cette requête va s'avérer plus compliqué car cette fois ci on doit envoyé des données.On peut le faire de deux manières avec CURL, ou un client comme [POSTMAN](https://www.postman.com/downloads/), ce que je vous recommande et aussi ce que j'utilise.
-Donc dans le corps de notre requête sur POSTMAN on va y mettre un objet car.
+Testing this request will be more complicated because this time we have to send data. You can do this in two ways with CURL, or a customer like [POSTMAN](https://www.postman.com/downloads/), which I recommend and also what I use.
+So in the body of our request on POSTMAN we’re going to put a car in it.
 ![POSTREQ](images/postman-test.png).
-Avec ceci notre CREATE est fait, il nous reste donc le UPDATE et le DELETE.
+With this our CREATE is done, so we still have the UPDATE and DELETE.
 
 ### UPDATE
-Le UPDATE (PATCH en HTTP) en HTTP est un mélange du GET et du POST car on va devoir d'abord chercher la ressource avec son id et ensuite lui dire les champs à éditer, dans l'exemple on va juste le faire avec le proprio de la voiture, on va d'abord créer la route qui convient
+The UPDATE (HTTP PATCH) in HTTP is a mixture of the GET and the POST because we will first have to look for the resource with its id and then tell it the fields to edit, in the example we will just do it with the owner of the car, we will first create the appropriate route
 ```js
 app.patch('/api/car/:id', (req, res)=>{
     const id = req.params.id
@@ -200,10 +198,10 @@ app.patch('/api/car/:id', (req, res)=>{
 });
 ```
 ![patch](images/postman-patch.png)
-avec cette méthode on arrive donc à modifier une données maintenant il ne reste plus qu'à pouvoir en supprimer.
+With this method we manage to modify a data now it only remains to be able to delete it.
 
 ### DELETE
-Le DELETE suis le même procéder que le PATCH sauf qu'ici on veut pas éditer une donnée mais la supprimer, on va donc s'y prendre comme ceci:
+The DELETE is the same as the PATCH except that here we do not want to edit a data but delete it, so we will do it like this:
 ```js
 app.delete('/api/car/:id', (req, res)=>{
     const id = req.params.id;
@@ -212,23 +210,23 @@ app.delete('/api/car/:id', (req, res)=>{
 });
 ```
 ![delete](images/postman-delete.png)
-Et normalement vous devriez avoir votre CRUD d'opérationnel, Mais une API reste ne se résume pas qu'à ça, car on doit aussi savoir si notre opération est un succès ou un échec et c'est les là que les code de réponses entre jeux.
+And normally you should have your operational CRUD, but an API remains is more than that, because we also need to know if our operation is a success or a failure and that’s where the response code between games.
 
 ### Status Codes
-Les Status Codes sont classées de la manière suivante:
-- 2XX correspond aux réussite des requêtes
-- 4xx correspond aux echec mais côté client
-- 5xx correspond aux erreur côté 
+Status Codes are classified as follows:
+- 2XX corresponds to successful requests
+- 4xx corresponds to failures but customer side
+- 5xx corresponds to side errors 
 
-vous trouverez une liste de des [code](https://developer.mozilla.org/fr/docs/Web/HTTP/Status) ici.
+you will find a list of [code](https://developer.mozilla.org/en/docs/Web/HTTP/Status) here.
 
 
-On, va donc rajouter les codes de réussites et ensuite on ira gérer les erreurs. Les codes de succès sont assez simple à rajouter il suffit de le mettre en préfixe du send, de cette manière `res.status({status code}).send({notre message})`.
-Pour le cas du create ce sera un code 201 donc la réponse ressemblera à ça `res.status(201).send({message: "Car added to the db", entity: car})` et pour le reste on utilisera du 200 *notez que pour le delete on peut mettre du 204 à condition que la requête soit vide*. 
+So we’ll, uh, add in the success codes and then we’ll go deal with the mistakes. Success codes are quite simple to add just put it in the prefix of the send, in this way res.status({status code}). send({our message})`.
+For the create case it will be a 201 code so the response will look like that `res.status(201). send({message: "Car added to the db", entity: car}) and for the rest we use 200 *note that to delete we can put 204 provided the request is empty*. 
 
-On peut ensuite passé à la gestion d'erreurs dans le cas des get il faut vérifier que la ressources puisse être trouvé. On va donc effectuer les vérification et si ce n'est pas le cas on enverra code d'erreur 404(le fameux) avec le message "resource not found" ensuite il faut que l'on vérifie si les données envoyés sont bonnes, si notre champs proprio est bien un texte et pas nombre, dans le cas échéant on mettra une erreur 400 suivi du message (Bad request). 
+We can then move to error management in the case of get you must check that the resources can be found. So we will perform the checks and if this is not the case we will send error code 404(the famous) with the message "resource not found" then we must check if the data sent is good, if our property field is a text and not a number, if applicable, an error 400 will be placed followed by the message (Bad request). 
 
-On se retrouve donc avec le code ci dessous:
+We end up with the following code:
 ```js
 const express = require("express");
 const app = express();
@@ -239,21 +237,21 @@ let cars = [];
 let car1 = {
     id: 1,
     name: "Tesla Model S",
-    proprio: "Mr Iervese",
+    proprio: "Mr Ren",
     date: 2017,
 }
 
 let car2 = {
     id: 2,
     name: "Lamborghini Urus",
-    proprio: "Mr Hagot",
+    proprio: "Mr Pierre",
     date: 2019,
 }
 
 let car3 = {
     id: 3,
     name: "Ferrari Roma",
-    proprio: "Mr Georges",
+    proprio: "Mr Henry",
     date: 2016,
 }
 
@@ -318,4 +316,8 @@ app.listen(3000, ()=>{
     console.log('app running on port 3000');
 });
 ```
-Voilà vous avez votre premier API REST
+Voilà ! You have your first REST API !
+
+The next classes of the serie will be on making a REST API with a NoSQL database(like MongoDB) and One with a SQL Database(like PostgreSQL) with and without and ORM(I'll explain everything in a next class).
+
+Do not hesitate to give me feedbacks by mailing at this adress: salaynadoukoure@gmail.com
