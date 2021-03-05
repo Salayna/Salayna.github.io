@@ -34,14 +34,14 @@ Les APIs REST vont se reposer sur les méthodes http pour gérer leurs requêtes
 Pour commencer nous allons initialiser notre projet comme ceci:
 - on va d'abord créer notre dossier (le nom importe peu)
 - on s'assure que Node est installé avec la commande ``node -v`` si ce n'est pas le cas je vous renvoie vers le site officiel https://nodejs.org/en/download/
-- Une fois Node installé on va effectuer la commande ``npm init``,on devrait avoir un prompt où remplir des informations trivial à la suite de quoi on aura à la racine de notre projet un fichier `package.json`.
+- Une fois Node installé on va effectuer la commande ``npm init``,on devrait avoir un prompt où remplir des informations triviales à la suite de quoi on aura à la racine de notre projet un fichier `package.json`.
 - on va ensuite créer un fichier index.js aussi la racine du projet.
 
 Avant d'aller plus loin on va d'abord expliquer quelques points vu au dessus:
 ### Qu'est-ce que NodeJS ? 
-NodeJS est une plateforme logiciel qui permet de booster le Javascript qui, avant tout ça était surtout un langages utilisé pour faire de belles animations et rendre un peu plus dynamique les sites web. Le NodeJS permet au Javascript d'être utilisé côté serveur et de faire un bon nombre de choses assez incroyable (programmation asynchrone etc...)
+NodeJS est une plateforme logiciel qui permet de booster le Javascript qui, avant tout ça était surtout un langages utilisé pour faire de belles animations et rendre un peu plus dynamique les sites web. Le NodeJS permet au Javascript d'être utilisé côté serveur et de faire un bon nombre de choses assez incroyables (programmation asynchrone etc...)
 ### À quoi sert le fichier package.json ?
-le fichier package.json sert de fichier de contrôle pour votre projet. Le nom, l'auteur, des script utile, les dépendances et pleins d'autres informations sont stocké à l'intérieur de ce fichier.  
+le fichier package.json sert de fichier de contrôle pour votre projet. Le nom, l'auteur, des script utile, les dépendances et pleins d'autres informations sont stockées à l'intérieur de ce fichier.  
 
 ### Ajout de dépendances
  On va avoir besoin de quelques dépendances pour ce projet.
@@ -85,13 +85,13 @@ app.listen(3000, ()=>{
     console.log('app running on port 3000');
 });
 ```
-Votre server fonctionne maintenant mais vous ne pouvez rien faire, on va donc créer notre premier endpoint juste au dessus de notre `app.listen()`:
+Votre serveur fonctionne maintenant mais vous ne pouvez rien faire, on va donc créer notre premier endpoint juste au dessus de notre `app.listen()`:
 ```js
 app.get('/', (req, res)=> {
     res.send("Welcome to this demo API")
 });
 ```
-Nous venons tout juste de rajouter un GET avec la fonction `app.get()` qui prends en paramètre la route de la ressource dans ce cas ci la racine '/' et une callback dont les arguments seront **req**: la requête, **res**: la réponse on va ensuite dire, dans ce callback, à notre serveur d'envoyé comme réponse "Welcome to this demo API";
+Nous venons tout juste de rajouter un GET avec la fonction `app.get()` qui prends en paramètre la route de la ressource dans ce cas ci la racine '/' et une callback dont les arguments seront **req**: *la requête*, **res**: *la réponse* on va ensuite dire, dans ce callback, à notre serveur d'envoyé comme réponse "Welcome to this demo API";
 Avant de tester cette requête on va juste rajouter un petit script qui va nous simplifier la vie dans le `package.json`. dans l'objet scripts ajoutez: 
 ``"dev:start": "nodemon ."``  
 votre object scripts devrait maintenant ressembler à ça: 
@@ -106,7 +106,7 @@ Pour tester si notre GET fonctionne, rien de plus simple, on va juste aller sur 
 vous devriez avoir ce résultat.  
 ![response](images/api-message.png).
 
-Avant d'aller plus loin créer des données factices pour notre API. Créons donc un tableau cars qui sera un tableau de voiture
+Avant d'aller plus loin créons des données factices pour notre API dans notre cas un tableau d'objets de types cars.
 ```js
 let cars = [];
 
@@ -137,16 +137,16 @@ cars.push(car1, car2, car3);
 Dans la partie ci-dessous on va implémenter un CRUD (Create Read Update Delete) sur les voitures.
 
 ### Read
-Le Read passe donc par la méthode GET du protocole HTTP.On va d'abord donc commencer par le Read étant la fonction la plus simple, on fera trois lecture une qui permettra de récupérer toutes les voitures et deux qui permettront de récupérer une voiture en fonction de ses attributs.
-Pour le premier Read on va rajouter un endpoint sur la route '/cars'. et ce endpoint renverra juste le contenue de notre tableau cars.
+Le Read passe donc par la méthode GET du protocole HTTP.On va d'abord donc commencer par celle ci étant la fonction la plus simple. On fera trois lecture une qui permettra de récupérer toutes les voitures et deux qui permettront de récupérer une voiture en fonction de ses attributs.
+Pour le premier Read on va rajouter un endpoint sur la route '/cars', et ce endpoint renverra juste le contenue de notre tableau cars.
 ```js
 app.get('api/cars', (req, res)=> {
     res.send(cars);
 })
 ```
-Assez simple comme première fonction *notez que je fais ici abstraction de tout ce qui est base de données dans un exemple d'API en production(surement la prochaine leçon) le code sera beaucoup plus fourni*. Pour la prochaine fonction on récupérera une voiture en fonction de certaines informations sur la voiture en paramètre en utilisant le paramètre req de la callback de la fonction get. Mais il y a deux manière de récupérer le paramètre soit à travers `req.query` ou à travers `req.params` le choix de l'un des deux va changer comment coder la fonction. On va donc voir les deux.
+Assez simple comme première fonction *notez que je fais ici abstraction de tout ce qui est base de données dans un exemple d'API en production(surement la prochaine leçon) le code sera beaucoup plus fourni*. Pour la prochaine fonction on récupérera une voiture en fonction de certaines informations sur la voiture passée en paramètre, en utilisant le paramètre req du callback de la fonction get. Mais il y a deux manière de récupérer le paramètre soit à travers `req.query` ou à travers `req.params` le choix de l'un des deux va changer comment on va coder la fonction. On va donc voir les deux.
 #### req.params
-**req.params** va s'occuper de parser les paramètre au niveau de la route et pas de l'URL. La différence entre la route et l'URL est assez subtile mais disons que l'URL est l'entité en entière par exemple le "https://localhost:3000/cars" là où la route est plus une définission de chemin par exemple `api/cars/`. Pour utilisé req.params on va d'abord dire au router de notre api qu'on attend une valeur au niveau de la route comme ceci: 
+**req.params** va s'occuper de parser les paramètres au niveau de la route et pas de l'URL. La différence entre la route et l'URL est assez subtile mais disons que l'URL est l'entité en entière par exemple le "https://localhost:3000/cars" là où la route est plus une définission de chemin par exemple `api/cars/`. Pour utilisé req.params on va d'abord dire au router de notre api qu'on attend une valeur au niveau de la route comme ceci: 
 ```js
 app.get('/api/cars/:id', (req, res)=>{
     const id  = req.params.id
