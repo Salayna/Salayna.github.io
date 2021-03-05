@@ -11,7 +11,7 @@ menu:
 ---
 # Qu'est ce qu'une API
 Une API (Application Programming Interface) est un set de méthodes, de variables, et de protocoles permettant d'interfacer deux applications. On distingue plusieurs types d'API:  
-- d'un côté on peut avoir une API qui servir à utilisé les fonctions d'une autre application, pour par exemple intégrer certains modules à d'autres application  
+- d'un côté on peut avoir une API qui va permettre d'utilisé les fonctions d'une autre application, pour par exemple intégrer certains modules à d'autres application  
 - de l'autre côté on peut avoir une API qui va servir des données à notre application comme les APIs en GraphQL ou Rest(ce que l'on va voir aujourd'hui)
 ## Le modèle REST
 Le modèle **REST**(REpresentational State Transfer) est un ensemble de règles et de contraintes à respecter pour la création de services web. Ces services permettent manipulation de resources web et se repose lourdement sur le protocoles HTTP.
@@ -113,21 +113,21 @@ let cars = [];
 let car1 = {
     id: 1,
     name: "Tesla Model S",
-    proprio: "Mr Ren",
+    proprio: "M Hagot",
     date: 2017,
 }
 
 let car2 = {
     id: 2,
     name: "Lamborghini Urus",
-    proprio: "Mr Pierre",
+    proprio: "M Iervese",
     date: 2019,
 }
 
 let car3 = {
     id: 3,
     name: "Ferrari Roma",
-    proprio: "Mr Henry",
+    proprio: "M Georges",
     date: 2016,
 }
 
@@ -240,21 +240,21 @@ let cars = [];
 let car1 = {
     id: 1,
     name: "Tesla Model S",
-    proprio: "Mr Ren",
+    proprio: "M Hagot",
     date: 2017,
 }
 
 let car2 = {
     id: 2,
     name: "Lamborghini Urus",
-    proprio: "Mr Pierre",
+    proprio: "M Iervese",
     date: 2019,
 }
 
 let car3 = {
     id: 3,
     name: "Ferrari Roma",
-    proprio: "Mr Henry",
+    proprio: "M Georges",
     date: 2016,
 }
 
