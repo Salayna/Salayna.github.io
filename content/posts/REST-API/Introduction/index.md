@@ -9,6 +9,22 @@ menu:
     parent: api-rest
     weight: 10
 ---
+
+REST APIs are a big parts of todays developpement landscapes, they're everywhere but are they and how do they work ? In this article we'll go through the basics of REST APIs using NodeJS
+You'll find all the source code of this project in this Github repository: [REST API example](https://Github.com/Salayna/api-rest-example)
+# Jump Links
+- [What is an API](#what-is-an-api)
+    - [The REST Model](#the-rest-model)
+        - [Quick Overview of the HTTP Protocol](#quick-overview-of-the-http-protocol)
+- [Let's code](#lets-code)
+    - [Project Setup](#project-setup)
+    - [Creating the web server and sending basic text](#creating-the-web-server-and-sending-basic-text)
+    - [CRUD on API](#crud-on-api)
+        - [Read](#read)
+        - [Create](#create)
+        - [Update](#update)
+        - [Delete](#delete)
+        - [Status Codes](#status-codes)
 # What is an API
 An Application Programming Interface (API) is a set of methods, variables, and protocols to connect two applications. There are several types of APIs:
 - on the one hand we can have an API that can be used to use the functions of another application, for example to integrate certain modules with other applications
@@ -28,7 +44,7 @@ The protocol includes methods that will define possible actions on resources, am
 REST APIs will rely on http methods to manage their requests.
 
 # Let's code
-*ps: We will use NodeJS for this tutorial, in order to understand how it works, you can find a github rest containing the tutorial code at the end of it*
+*ps: We will use NodeJS for this tutorial, in order to understand how it works*
 
 ## Project setup
 To begin we will initialize our project as follows:
@@ -323,4 +339,3 @@ The next classes of the serie will be on making a REST API with a NoSQL database
 
 Do not hesitate to give me feedbacks bin the comment section just below ! See you soon !
 
-here is the project repository: [API REST example](https://github.com/Salayna/api-rest-example)

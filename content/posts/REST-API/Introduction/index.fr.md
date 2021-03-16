@@ -9,6 +9,21 @@ menu:
     parent: api-rest
     weight: 10
 ---
+Les APIs REST sont une partie très importante de l'éco-système informatique tant ils ont omniprésent, mais que sont-ils et comment fonctionnent-t-ils ? Dans cet article on verra les bases des APIs REST avec NodeJS.  
+Vous trouverez tout le code source de cet article dans ce repo Github: [API REST example](https://Github.com/Salayna/api-rest-example)
+# Jump Links
+- [Qu'est ce qu'une API](#quest-ce-quune-api)
+    - [Le modèle REST](#le-modèle-rest)
+        - [Le protocole HTTP en bref](#le-protocole-http-en-bref)
+- [Implémentons](#implémentons)
+    - [Initialisation du projet](#initialisation-du-projet)
+    - [Création de notre serveur web et envoie de texte](#création-de-notre-serveur-web-et-envoie-de-texte)
+    - [CRUD on API](#api-crud)
+        - [Read](#read)
+        - [Create](#create)
+        - [Update](#update)
+        - [Delete](#delete)
+        - [Status Codes](#status-codes)
 # Qu'est ce qu'une API
 Une API (Application Programming Interface) est un set de méthodes, de variables, et de protocoles permettant d'interfacer deux applications. On distingue plusieurs types d'API:  
 - d'un côté on peut avoir une API qui va permettre d'utilisé les fonctions d'une autre application, pour par exemple intégrer certains modules à d'autres application  
@@ -28,7 +43,7 @@ Le protocole compte des méthodes qui vont définir les actions possible sur les
 Les APIs REST vont se reposer sur les méthodes http pour gérer leurs requêtes.
 
 # Implémentons
-*ps: On utilisera du NodeJS pour ce tutoriel, le but de comprendre comment ça marche, vous pourrez trouver un repos github contenant le code du tutoriel à la fin de celui ci*
+*ps: On utilisera du NodeJS pour ce tutoriel, le but de comprendre comment ça marche*
 
 ## Initialisation du projet
 Pour commencer nous allons initialiser notre projet comme ceci:
@@ -324,5 +339,3 @@ Voilà vous avez votre premier API REST
 Les prochains cours de cette série seront dédiés à la création d'API avec une base données en NoSQL(comme mongoDB) et une en SQL(comme PostgreSQL) avec et sans ORM(j'expliquerai ce qu'est un ORM dans un prochain cours).
 
 N'hésitez pas à me faire des retours concernant mes cours en commentaire juste en dessous ! À bientôt !
-
-Le répo du projet: [API REST example](https://github.com/Salayna/api-rest-example)
