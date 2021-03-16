@@ -10,7 +10,7 @@ menu:
     weight: 10
 ---
 
-REST APIs are a big parts of todays developpement landscapes, they're everywhere but are they and how do they work ? In this article we'll go through the basics of REST APIs using NodeJS
+REST APIs are a big parts of todays developpement landscapes, they're everywhere but are they and how do they work ? In this article we'll go through the basics of REST APIs using NodeJS.  
 You'll find all the source code of this project in this Github repository: [REST API example](https://Github.com/Salayna/api-rest-example)
 # Jump Links
 - [What is an API](#what-is-an-api)
