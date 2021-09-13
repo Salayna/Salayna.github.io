@@ -19,8 +19,8 @@ That's the complicated part, the game engine handles everything about the game, 
 - Sounds 
 - User inputs 
 - Texts and dialogs 
-- Menus
-I know some things are missing, leave me alone 😫
+- Menus  
+I know some things are missing, leave me alone 😫.  
 That's it for the first entry of this Dev Log, you'll find here a link the Trello board and the github repo
 See You Next time and Remember I don't love you nor Computer Science ❤️   
 If I'm not consistent in writing my Dev Log entries feel free to send a message or call me here:  
