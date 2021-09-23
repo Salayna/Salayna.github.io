@@ -9,6 +9,7 @@ menu:
         parent: a-kaharean-tale-devlog
         weight: 10
 ---
+**Disclaimer**: This is a devlog, not a tutorial, so I'll mainly express my though. It will not be formal, because I think that I'm not a robot(I wish I was tho, Imagine not being stressed). On that not, I hope you enjoy that reading. Plot twitst no I don't.    
 So I was watching that cool streamer (pacopogo on Twitch) and we were talking about game engines and which one is better for a certain job. And I had the dumb idea of saying that I'll try to  make a one. But I quickly realized that a game engine like Unity, Godot or Unreal Engine would be really difficult to make. It demands a certain level in programming that I clearly don't have. I mean I'm as dumb as a bag of bricks 😌. I then decided to make a game from scratch with its custom engine. It's easier I guess (No not at all please end me before I go too far).
 # A little bit about the game
 The Game name is  A Kaharean Tale. It's highly inspired by The Legend Of Zelda. Story wise it will be a story about a space princess that will try to uncover the truth about the "peaceful" empire she'll have to rule one day. I won't tell you more because I don't want to besides I'm kinda lazy right now.  
